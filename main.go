@@ -15,3 +15,4 @@ type FloodControl interface {
 	// кол-ва запросов согласно заданным правилам флуд контроля.
 	Check(ctx context.Context, userID int64) (bool, error)
 }
+//
