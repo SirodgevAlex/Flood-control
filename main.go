@@ -2,17 +2,21 @@ package main
 
 import (
 	"context"
+	"task/floodcontrol"
+    "fmt"
+    "github.com/go-redis/redis/v8"
 )
 
+var N int
+var K int
+
 func main() {
+	redisClient, err := redis.NewClient("localhost:6379")
+    if err != nil {
+        fmt.Println("Error creating Redis client:", err)
+        return
+    }
+    defer redisClient.Close()
 
+	
 }
-
-// FloodControl интерфейс, который нужно реализовать.
-// Рекомендуем создать директорию-пакет, в которой будет находиться реализация.
-type FloodControl interface {
-	// Check возвращает false если достигнут лимит максимально разрешенного
-	// кол-ва запросов согласно заданным правилам флуд контроля.
-	Check(ctx context.Context, userID int64) (bool, error)
-}
-//gg
